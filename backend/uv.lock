@@ -1,9 +1,8 @@
 version = 1
-revision = 1
-requires-python = ">=3.10"
+revision = 2
+requires-python = ">=3.13"
 
 [[package]]
 name = "demon-bluff"
 version = "0.1.0"
 source = { virtual = "." }
-

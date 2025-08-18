@@ -1,0 +1,23 @@
+[
+    {
+        "image": "images/minion.png",
+        "name": "Minion",
+        "alignment": "evil",
+        "type": "minion",
+        "template": ""
+    },
+    {
+        "image": "images/hunter.png",
+        "name": "Hunter",
+        "alignment": "good",
+        "type": "villager",
+        "template": ""
+    },
+    {
+        "image": "images/lover.png",
+        "name": "Lover",
+        "alignment": "good",
+        "type": "villager",
+        "template": ""
+    }
+]
