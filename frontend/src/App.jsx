@@ -49,7 +49,7 @@ function App() {
                 width: '120px',
                 textAlign: 'center',
                 fontSize: '1rem',
-                background: '#f4f4f4',
+                background: '#000000ff',
                 border: '1px solid #ccc',
                 borderRadius: '8px',
                 marginBottom: '8px',
