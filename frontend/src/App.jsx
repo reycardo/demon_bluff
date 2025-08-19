@@ -1,23 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 function App() {
-  const [cards, setCards] = useState([]);
-  const [selected, setSelected] = useState(null);
-  const [descriptions, setDescriptions] = useState({});
+  const [cards, setCards] = React.useState([]);
+  const [selected, setSelected] = React.useState(null);
 
-  useEffect(() => {
+  React.useEffect(() => {
     fetch('game.json')
       .then((res) => res.json())
-      .then((data) => {
-        setCards(data);
-      })
+      .then(setCards)
       .catch(() => setCards([]));
   }, []);
 
-  // Circle layout
-  const radius = 120;
-  const centerX = 150;
-  const centerY = 150;
+  // Responsive circle layout
+  const size = 500;
+  const cardSize = 140; // Easily adjust card button size
+  const imageSize = 120; // Easily adjust image size
+  const radius = size / 2 - cardSize / 2 - 15;
+  const center = size / 2;
 
   return (
     <div style={{
@@ -30,11 +29,40 @@ function App() {
       alignItems: 'center',
       justifyContent: 'center'
     }}>
-      <div style={{ position: 'relative', width: 350, height: 350 }}>
+      <div style={{ position: 'relative', width: size, height: size }}>
+        {/* Template textbox above each button, positioned relative to its button */}
         {cards.map((card, i) => {
           const angle = (2 * Math.PI * i) / cards.length;
-          const x = 175 + radius * Math.cos(angle) - 40;
-          const y = 175 + radius * Math.sin(angle) - 20;
+          const x = center + radius * Math.cos(angle) - cardSize / 2;
+          const y = center + radius * Math.sin(angle) - cardSize / 2;
+          // Center the textbox and button on the same y-axis
+          return (
+            <input
+              key={card.name + '-template'}
+              type="text"
+              value={card.template}
+              readOnly
+              style={{
+                position: 'absolute',
+                left: x + cardSize / 2 - 60, // 60px is half the textbox width
+                top: y - 44, // 44px above the button, adjust for vertical centering
+                width: '120px',
+                textAlign: 'center',
+                fontSize: '1rem',
+                background: '#f4f4f4',
+                border: '1px solid #ccc',
+                borderRadius: '8px',
+                marginBottom: '8px',
+                padding: '4px 8px',
+                zIndex: 2
+              }}
+            />
+          );
+        })}
+        {cards.map((card, i) => {
+          const angle = (2 * Math.PI * i) / cards.length;
+          const x = center + radius * Math.cos(angle) - cardSize / 2;
+          const y = center + radius * Math.sin(angle) - cardSize / 2;
           return (
             <button
               key={card.name}
@@ -42,9 +70,9 @@ function App() {
                 position: 'absolute',
                 left: x,
                 top: y,
-                width: 80,
-                height: 80,
-                borderRadius: '40px',
+                width: cardSize,
+                height: cardSize,
+                borderRadius: '50%',
                 fontSize: '1.1rem',
                 cursor: 'pointer',
                 background: selected === card.name ? '#e0e0ff' : '#fff',
@@ -54,11 +82,12 @@ function App() {
                 flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'center',
-                overflow: 'hidden'
+                overflow: 'hidden',
+                transition: 'background 0.2s'
               }}
               onClick={() => setSelected(card.name)}
             >
-              <img src={card.image} alt={card.name} style={{ width: 48, height: 48, objectFit: 'contain', marginBottom: 4 }} />
+              <img src={card.image} alt={card.name} style={{ width: imageSize, height: imageSize, objectFit: 'contain', marginBottom: 4 }} />
               <span>{card.name}</span>
             </button>
           );
@@ -74,7 +103,7 @@ function App() {
             minHeight: '2rem',
             maxWidth: '260px',
             margin: '0 auto',
-            background: '#fff',
+            background: '#000000ff',
             borderRadius: '12px',
             padding: '1rem',
             boxShadow: '0 2px 8px rgba(0,0,0,0.08)'

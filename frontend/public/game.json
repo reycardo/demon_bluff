@@ -4,20 +4,20 @@
         "name": "Minion",
         "alignment": "evil",
         "type": "minion",
-        "template": ""
+        "template": "am minion"
     },
     {
         "image": "images/hunter.png",
         "name": "Hunter",
         "alignment": "good",
         "type": "villager",
-        "template": ""
+        "template": "am hunter"
     },
     {
         "image": "images/lover.png",
         "name": "Lover",
         "alignment": "good",
         "type": "villager",
-        "template": ""
+        "template": "am lover"
     }
 ]
