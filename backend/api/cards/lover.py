@@ -7,7 +7,8 @@ class Lover(Card):
             name="Lover",
             alignment=Alignment.GOOD,
             type=CardType.VILLAGER,
-            template=""
+            template="",
+            description="Learn how many Evil characters I am adjacent to"
         )
 
     def set_template(self, number_of_adjacent_evils: int):

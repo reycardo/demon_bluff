@@ -20,6 +20,7 @@ class Card:
     alignment: Alignment
     type: CardType
     template: str
+    description: str = ""
 
     def __post_init__(self):
         # Always prepend the image path
@@ -31,7 +32,8 @@ class Card:
             "name": self.name,
             "alignment": self.alignment.value if hasattr(self.alignment, 'value') else str(self.alignment),
             "type": self.type.value if hasattr(self.type, 'value') else str(self.type),
-            "template": self.template
+            "template": self.template,
+            "description": self.description
         }
 
     @staticmethod

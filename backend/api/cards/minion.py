@@ -7,7 +7,8 @@ class Minion(Card):
             name="Minion",
             alignment=Alignment.EVIL,
             type=CardType.MINION,
-            template=""
+            template="",
+            description="I always lie"
         )
 
     def set_template(self):
