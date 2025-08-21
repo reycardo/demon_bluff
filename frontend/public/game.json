@@ -4,20 +4,23 @@
         "name": "Minion",
         "alignment": "evil",
         "type": "minion",
-        "template": "am minion"
+        "template": "",
+        "description": "I always lie"
     },
     {
         "image": "images/hunter.png",
         "name": "Hunter",
         "alignment": "good",
         "type": "villager",
-        "template": "am hunter"
+        "template": "",
+        "description": "Learn how far from me is the nearest Evil"
     },
     {
         "image": "images/lover.png",
         "name": "Lover",
         "alignment": "good",
         "type": "villager",
-        "template": "am lover"
+        "template": "",
+        "description": "Learn how many Evil characters I am adjacent to"
     }
 ]

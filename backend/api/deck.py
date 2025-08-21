@@ -28,5 +28,6 @@ if __name__ == "__main__":
     selected_evil = random.choice(evil_cards) if evil_cards else None
     selected_good = random.sample(good_cards, 2) if len(good_cards) >= 2 else good_cards
     game = [selected_evil] + selected_good if selected_evil else selected_good
-    # Dump selected game cards to game.json
-    Card.dump_to_json(game, filename="game.json")
+    # Dump selected game cards to game.json        
+    frontend_public_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../frontend/public/game.json'))
+    Card.dump_to_json(game, filename=frontend_public_path)
