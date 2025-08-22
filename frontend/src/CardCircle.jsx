@@ -1,8 +1,23 @@
 import CardButton from './CardButton';
 
-export default function CardCircle({ cards, selected, onSelect, size = 500, cardSize = 80 }) {  
-  const radius = (size - cardSize) / 2 + 20;
+import React from 'react';
+
+export default function CardCircle({ cards, selected, onSelect, size = 500, cardSize = 80 }) {
+  // Dynamic radius based on viewport size
+  const [radius, setRadius] = React.useState(() => {
+    const minDim = Math.min(window.innerWidth, window.innerHeight);
+    return (minDim - cardSize) / 2 - 60; // 60px padding from edge
+  });
   const center = size / 2;
+
+  React.useEffect(() => {
+    function handleResize() {
+      const minDim = Math.min(window.innerWidth, window.innerHeight);
+      setRadius((minDim - cardSize) / 2 - 60);
+    }
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [cardSize]);
 
   return (
     <div style={{ position: 'relative', width: size, height: size }}>
