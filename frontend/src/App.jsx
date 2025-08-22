@@ -28,7 +28,7 @@ function App() {
         selected={selected}
         onSelect={setSelected}
         size={1000}
-        cardSize={200}
+        cardSize={150}
       />
     </div>
   );
