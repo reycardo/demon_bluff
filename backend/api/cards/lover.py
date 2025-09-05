@@ -1,3 +1,4 @@
+import random
 from api.game_setup.game_disposition import GameDisposition
 from .base import Card, Alignment, CardType
 
@@ -15,4 +16,22 @@ class Lover(Card):
         )
 
     def set_template(self, this_card_position: int, game_disposition: GameDisposition):
-        self.template = f"NOT IMPLEMENTED"
+        # based on the game_disposition, check the adjacent positions to see if there are any EVIL cards
+        adjacent_positions = game_disposition.get_adjacent_positions(this_card_position)
+        evil_count = 0
+        for pos in adjacent_positions:
+            card = game_disposition.get_card_at(pos)
+            if card and card.alignment == Alignment.EVIL:
+                evil_count += 1
+
+        # get evils in game disposition
+        total_evil = sum(1 for card in game_disposition.get_all_cards() if card.alignment == Alignment.EVIL)
+        
+        if self.is_corrupted:
+            # Lie about the number of adjacent evil cards
+            possible_lies = [i for i in range(0, total_evil) if i != evil_count]
+            if possible_lies:
+                lie = random.choice(possible_lies)
+                self.template = f"I have {lie} Evil neighbors"
+            else:
+                self.template = f"I have {evil_count} Evil neighbors"        
