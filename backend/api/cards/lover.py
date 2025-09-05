@@ -27,11 +27,16 @@ class Lover(Card):
         # get evils in game disposition
         total_evil = sum(1 for card in game_disposition.get_all_cards() if card.alignment == Alignment.EVIL)
         
+        def neighbor_text(n):
+            return f"Evil neighbor{'s' if n != 1 else ''}"
+
         if self.is_corrupted:
             # Lie about the number of adjacent evil cards
-            possible_lies = [i for i in range(0, total_evil) if i != evil_count]
+            possible_lies = [i for i in range(0, total_evil + 1) if i != evil_count]
             if possible_lies:
                 lie = random.choice(possible_lies)
-                self.template = f"I have {lie} Evil neighbors"
+                self.template = f"I have {lie} {neighbor_text(lie)}"
             else:
-                self.template = f"I have {evil_count} Evil neighbors"        
+                self.template = f"I have {evil_count} {neighbor_text(evil_count)}"
+        else:
+            self.template = f"I have {evil_count} {neighbor_text(evil_count)}"
