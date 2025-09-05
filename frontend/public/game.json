@@ -9,21 +9,21 @@
     "position": 0
   },
   {
+    "image": "images/lover.png",
+    "name": "Lover",
+    "alignment": "good",
+    "type": "villager",
+    "template": "I have 1 Evil neighbors",
+    "description": "Learn how many Evil characters I am adjacent to",
+    "position": 1
+  },
+  {
     "image": "images/hunter.png",
     "name": "Hunter",
     "alignment": "good",
     "type": "villager",
     "template": "I am 1 card away from closest Evil",
     "description": "Learn how far from me is the nearest Evil",
-    "position": 1
-  },
-  {
-    "image": "images/lover.png",
-    "name": "Lover",
-    "alignment": "good",
-    "type": "villager",
-    "template": "",
-    "description": "Learn how many Evil characters I am adjacent to",
     "position": 2
   }
 ]
