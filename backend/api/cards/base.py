@@ -15,11 +15,19 @@ class CardType(Enum):
 
 @dataclass
 class Card:
+    def set_template(self, this_card_position: int, game_disposition: "GameDisposition") -> None:
+        """
+        Placeholder for setting the card's template based on its position and the game disposition.
+        Should be overridden by subclasses.
+        """
+        pass
     image: str
     name: str
     alignment: Alignment
     type: CardType
     template: str
+    is_corrupted: bool
+    is_lying: bool
     description: str = ""
 
     def __post_init__(self):
@@ -35,6 +43,9 @@ class Card:
             "template": self.template,
             "description": self.description
         }
+
+    def corrupt(self):
+        self.is_corrupted = True
 
     @staticmethod
     def dump_to_json(cards, filename="game.json"):

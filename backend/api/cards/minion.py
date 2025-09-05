@@ -1,3 +1,4 @@
+from api.game_setup.game_disposition import GameDisposition
 from .base import Card, Alignment, CardType
 
 class Minion(Card):
@@ -8,8 +9,10 @@ class Minion(Card):
             alignment=Alignment.EVIL,
             type=CardType.MINION,
             template="",
-            description="I always lie"
+            description="I always lie",
+            is_corrupted=False,
+            is_lying=True
         )
 
-    def set_template(self):
-        self.template = f""
+    def set_template(self, this_card_position: int, game_disposition: GameDisposition):
+        self.template = f"NOT IMPLEMENTED"

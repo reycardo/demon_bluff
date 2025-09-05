@@ -12,4 +12,7 @@ if __name__ == "__main__":
     deck = prepare_deck()
     game = card_selection(deck=deck, evil_quantity=1, good_quantity=2)
     game_disposition = GameDisposition(positions={i: card for i, card in enumerate(game)})
+    # Set templates for each card based on their position and the overall game disposition
+    for position, card in game_disposition.positions.items():
+        card.set_template(this_card_position=position, game_disposition=game_disposition)
     game_disposition.dump_to_frontend(filename=str(frontend_public_path))

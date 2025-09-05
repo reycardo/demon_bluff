@@ -1,3 +1,4 @@
+from api.game_setup.game_disposition import GameDisposition
 from .base import Card, Alignment, CardType
 
 class Lover(Card):
@@ -8,8 +9,10 @@ class Lover(Card):
             alignment=Alignment.GOOD,
             type=CardType.VILLAGER,
             template="",
-            description="Learn how many Evil characters I am adjacent to"
+            description="Learn how many Evil characters I am adjacent to",
+            is_corrupted=False,
+            is_lying=False
         )
 
-    def set_template(self, number_of_adjacent_evils: int):
-        self.template = f"{number_of_adjacent_evils} Evil adjacent to me"
+    def set_template(self, this_card_position: int, game_disposition: GameDisposition):
+        self.template = f"NOT IMPLEMENTED"
