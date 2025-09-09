@@ -209,3 +209,4 @@ __marimo__/
 
 .DS_Store
 game.json
+frontend/public/game.json
