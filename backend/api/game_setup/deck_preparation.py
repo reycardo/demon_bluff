@@ -32,3 +32,7 @@ def card_selection(deck: List[Card], evil_quantity: int = 1, good_quantity: int 
 
     game: List[Card] = selected_evil + selected_good
     return game
+
+def shuffle_deck(deck: List[Card]) -> List[Card]:
+    random.shuffle(deck)
+    return deck

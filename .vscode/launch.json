@@ -1,0 +1,18 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: Debug main with uv",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/backend/main.py",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}/backend",
+      "env": {},
+      "args": [],
+      "justMyCode": true,
+      "debugOptions": ["RedirectOutput"],
+      "pythonPath": "uv"
+    }
+  ]
+}

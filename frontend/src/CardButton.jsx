@@ -11,7 +11,7 @@ export default function CardButton({ card, x, y, cardSize, selected, onSelect })
           left: x + (cardSize / 2) - (140 / 2),
           top: y - 70,
           width: '140px',
-          textAlign: 'center',          
+          textAlign: 'center',
           fontSize: '1rem',
           background: '#000000ff',
           border: '1px solid #ccc',
@@ -21,7 +21,7 @@ export default function CardButton({ card, x, y, cardSize, selected, onSelect })
           zIndex: 2,
           resize: 'none',
           overflow: 'auto',
-          whiteSpace: 'pre-wrap',          
+          whiteSpace: 'pre-wrap',
         }}
       />
       <button
@@ -45,8 +45,9 @@ export default function CardButton({ card, x, y, cardSize, selected, onSelect })
           overflow: 'hidden',
           transition: 'background 0.2s'
         }}
-  onClick={() => onSelect(selected === card.name ? null : card.name)}
+        onClick={() => onSelect(selected === card.name ? null : card.name)}
       >
+        <span style={{ marginBottom: 8, marginTop: 8 }}>#{card.position}</span>
         <img src={card.image} alt={card.name} style={{ width: cardSize * 0.6, height: cardSize * 0.6, objectFit: 'contain', marginBottom: 4 }} />
         <span>{card.name}</span>
       </button>

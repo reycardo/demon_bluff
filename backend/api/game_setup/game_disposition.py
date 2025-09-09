@@ -46,9 +46,9 @@ class GameDisposition:
         Dump the game disposition to a JSON file for the frontend, including position info for each card.
         """
         cards_with_position = []
-        for position, card in self.positions.items():
+        for idx, (position, card) in enumerate(self.positions.items()):
             card_data = card.to_dict() if hasattr(card, 'to_dict') else card.__dict__.copy()
-            card_data['position'] = position
+            card_data['position'] = idx
             cards_with_position.append(card_data)
         import json
         with open(filename, 'w') as f:

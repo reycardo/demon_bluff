@@ -34,17 +34,19 @@ class Hunter(Card):
                 nearest_evil_distance = distance
                 break        
 
-        if self.is_corrupted:
+        if self.is_corrupted or self.is_lying:
             # Get all possible distances except the real one
             possible_distances = [d for d in range(1, (total_positions // 2) + 1)]
             if nearest_evil_distance in possible_distances:
                 possible_distances.remove(nearest_evil_distance)
             if possible_distances:
                 lie_distance = random.choice(possible_distances)
-                self.template = f"I am {lie_distance} card away from closest Evil"
+                template = f"I am {lie_distance} card away from closest Evil"
         else:
             if nearest_evil_distance is not None:
-                self.template = f"I am {nearest_evil_distance} card away from closest Evil"
+                template = f"I am {nearest_evil_distance} card away from closest Evil"
             else:
-                self.template = "No Evil card in range"
+                template = "No Evil card in range"
 
+        self.template = template
+        return template

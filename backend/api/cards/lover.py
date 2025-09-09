@@ -30,13 +30,16 @@ class Lover(Card):
         def neighbor_text(n):
             return f"Evil neighbor{'s' if n != 1 else ''}"
 
-        if self.is_corrupted:
+        if self.is_corrupted or self.is_lying:
             # Lie about the number of adjacent evil cards
             possible_lies = [i for i in range(0, total_evil + 1) if i != evil_count]
             if possible_lies:
                 lie = random.choice(possible_lies)
-                self.template = f"I have {lie} {neighbor_text(lie)}"
+                template = f"I have {lie} {neighbor_text(lie)}"
             else:
-                self.template = f"I have {evil_count} {neighbor_text(evil_count)}"
+                template = f"I have {evil_count} {neighbor_text(evil_count)}"
         else:
-            self.template = f"I have {evil_count} {neighbor_text(evil_count)}"
+            template = f"I have {evil_count} {neighbor_text(evil_count)}"
+        
+        self.template = template
+        return self.template
