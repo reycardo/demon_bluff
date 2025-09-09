@@ -3,17 +3,18 @@ import CardButton from './CardButton';
 import React from 'react';
 
 export default function CardCircle({ cards, selected, onSelect, size = 500, cardSize = 80 }) {
+  const edge_padding = 100;
   // Dynamic radius based on viewport size
   const [radius, setRadius] = React.useState(() => {
     const minDim = Math.min(window.innerWidth, window.innerHeight);
-    return (minDim - cardSize) / 2 - 150; // 150px padding from edge
+    return (minDim - cardSize) / 2 - edge_padding; // 100px padding from edge
   });
   const center = size / 2;
 
   React.useEffect(() => {
     function handleResize() {
       const minDim = Math.min(window.innerWidth, window.innerHeight);
-      setRadius((minDim - cardSize) / 2 - 60);
+      setRadius((minDim - cardSize) / 2 - edge_padding);
     }
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
@@ -28,7 +29,7 @@ export default function CardCircle({ cards, selected, onSelect, size = 500, card
         const y = center + radius * Math.sin(angle) - cardSize / 2;
         return (
           <CardButton
-            key={card.name}
+            key={card.position}
             card={card}
             x={x}
             y={y}
@@ -38,9 +39,10 @@ export default function CardCircle({ cards, selected, onSelect, size = 500, card
           />
         );
       })}
-      {selected && (() => {
-        const card = cards.find(card => card.name === selected);
+      {selected !== null && (() => {
+        const card = cards.find(card => card.position === selected);        
         if (!card) return null;
+        const mask = card.masked_card;
         return (
           <div style={{
             position: 'absolute',
@@ -58,9 +60,15 @@ export default function CardCircle({ cards, selected, onSelect, size = 500, card
             padding: '1rem',
             boxShadow: '0 2px 8px rgba(0,0,0,0.08)'
           }}>
-            <div><strong>Description:</strong> {card.description}</div>
-            <div><strong>Type:</strong> {card.type}</div>
-            <div><strong>Alignment:</strong> {card.alignment}</div>
+            <div><strong>Description:</strong> {mask ? mask.description : card.description}</div>
+            <div><strong>Type:</strong> {mask ? mask.type : card.type}</div>
+            <div><strong>Alignment:</strong> {mask ? mask.alignment : card.alignment}</div>
+            <button
+              style={{ marginTop: 24, padding: '0.5rem 1.5rem', fontSize: '1.1rem', borderRadius: 8, background: '#c00', color: '#fff', border: 'none', cursor: 'pointer' }}
+              onClick={() => onKill(card.position)}
+            >
+              Kill Selected Card
+            </button>
           </div>
         );
       })()}
