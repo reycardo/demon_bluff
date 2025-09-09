@@ -28,8 +28,8 @@ class Lover(Card):
         if lying:
             # Lie about the alignment of the selected card
             if random_card.alignment == Alignment.GOOD:
-                template = f"#{random_position} is evil."
+                template = f"#{random_position} is Evil."
             else:
-                template = f"#{random_position} is good."
+                template = f"#{random_position} is Good."
         
         return template
