@@ -6,7 +6,7 @@ export default function CardCircle({ cards, selected, onSelect, size = 500, card
   // Dynamic radius based on viewport size
   const [radius, setRadius] = React.useState(() => {
     const minDim = Math.min(window.innerWidth, window.innerHeight);
-    return (minDim - cardSize) / 2 - 60; // 60px padding from edge
+    return (minDim - cardSize) / 2 - 150; // 150px padding from edge
   });
   const center = size / 2;
 
