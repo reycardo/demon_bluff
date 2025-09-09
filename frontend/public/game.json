@@ -1,38 +1,50 @@
 [
   {
+    "image": "images/minion.png",
+    "name": "Minion",
+    "alignment": "evil",
+    "type": "minion",
+    "template": "I am 1 card away from closest Evil",
+    "description": "I always lie",
+    "masked_card": {
+      "image": "images/hunter.png",
+      "name": "Hunter",
+      "alignment": "good",
+      "type": "villager",
+      "template": "I am 2 card away from closest Evil",
+      "description": "Learn how far from me is the nearest Evil",
+      "masked_card": null
+    },
+    "position": 0
+  },
+  {
     "image": "images/lover.png",
     "name": "Lover",
     "alignment": "good",
     "type": "villager",
-    "template": "I have 0 Evils adjacent to me",
+    "template": "I have 1 Evil adjacent to me",
     "description": "Learn how many Evil characters I am adjacent to",
-    "position": 0
-  },
-  {
-    "image": "images/saint.png",
-    "name": "Saint",
-    "alignment": "good",
-    "type": "villager",
-    "template": "#2 is evil.",
-    "description": "Learn if a card is Good or Evil",
+    "masked_card": null,
     "position": 1
-  },
-  {
-    "image": "images/saint.png",
-    "name": "Saint",
-    "alignment": "evil",
-    "type": "minion",
-    "template": "#1 is evil.",
-    "description": "I always lie",
-    "position": 2
   },
   {
     "image": "images/hunter.png",
     "name": "Hunter",
     "alignment": "good",
     "type": "villager",
-    "template": "I am 1 card away from closest Evil",
+    "template": "I am 2 card away from closest Evil",
     "description": "Learn how far from me is the nearest Evil",
+    "masked_card": null,
+    "position": 2
+  },
+  {
+    "image": "images/saint.png",
+    "name": "Saint",
+    "alignment": "good",
+    "type": "villager",
+    "template": "#2 is good.",
+    "description": "Learn if a card is Good or Evil",
+    "masked_card": null,
     "position": 3
   }
 ]
