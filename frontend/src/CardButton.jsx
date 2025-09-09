@@ -25,7 +25,7 @@ export default function CardButton({ card, x, y, cardSize, selected, onSelect })
         }}
       />
       <button
-        key={card.name}
+        key={card.position}
         style={{
           position: 'absolute',
           left: x,
@@ -35,7 +35,7 @@ export default function CardButton({ card, x, y, cardSize, selected, onSelect })
           borderRadius: '50%',
           fontSize: '1.1rem',
           cursor: 'pointer',
-          background: selected === card.name ? '#007618ff' : '#000000ff',
+          background: selected === card.position ? '#007618ff' : '#000000ff',
           border: '2px solid #888',
           boxShadow: '0 2px 6px rgba(0,0,0,0.1)',
           display: 'flex',
@@ -45,10 +45,10 @@ export default function CardButton({ card, x, y, cardSize, selected, onSelect })
           overflow: 'hidden',
           transition: 'background 0.2s'
         }}
-        onClick={() => onSelect(selected === card.name ? null : card.name)}
+        onClick={() => onSelect(selected === card.position ? null : card.position)}
       >
         <span style={{ marginBottom: 8, marginTop: 8 }}>#{card.position}</span>
-        <img src={card.image} alt={card.name} style={{ width: cardSize * 0.6, height: cardSize * 0.6, objectFit: 'contain', marginBottom: 4 }} />
+        <img src={card.masked_card ? card.masked_card.image : card.image} alt={card.name} style={{ width: cardSize * 0.6, height: cardSize * 0.6, objectFit: 'contain', marginBottom: 4 }} />
         <span>{card.name}</span>
       </button>
     </>
