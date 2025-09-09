@@ -29,6 +29,7 @@ class Card:
     is_corrupted: bool
     is_lying: bool
     description: str = ""
+    masked_card: "Card" = None
 
     def __post_init__(self):
         # Always prepend the image path
@@ -41,7 +42,8 @@ class Card:
             "alignment": self.alignment.value if hasattr(self.alignment, 'value') else str(self.alignment),
             "type": self.type.value if hasattr(self.type, 'value') else str(self.type),
             "template": self.template,
-            "description": self.description
+            "description": self.description,
+            "masked_card": self.masked_card.to_dict() if self.masked_card else None
         }
 
     def corrupt(self):
