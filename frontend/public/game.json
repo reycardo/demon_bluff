@@ -1,29 +1,29 @@
 [
   {
-    "image": "images/saint.png",
-    "name": "Saint",
-    "alignment": "good",
-    "type": "villager",
-    "template": "The card at position 3 is good.",
-    "description": "Learn if a card is Good or Evil",
-    "position": 0
-  },
-  {
-    "image": "images/hunter.png",
-    "name": "Hunter",
-    "alignment": "evil",
-    "type": "minion",
-    "template": "No Evil card in range",
-    "description": "I always lie",
-    "position": 1
-  },
-  {
     "image": "images/lover.png",
     "name": "Lover",
     "alignment": "good",
     "type": "villager",
-    "template": "I have 1 Evil neighbor",
+    "template": "I have 0 Evils adjacent to me",
     "description": "Learn how many Evil characters I am adjacent to",
+    "position": 0
+  },
+  {
+    "image": "images/saint.png",
+    "name": "Saint",
+    "alignment": "good",
+    "type": "villager",
+    "template": "#2 is evil.",
+    "description": "Learn if a card is Good or Evil",
+    "position": 1
+  },
+  {
+    "image": "images/saint.png",
+    "name": "Saint",
+    "alignment": "evil",
+    "type": "minion",
+    "template": "#1 is evil.",
+    "description": "I always lie",
     "position": 2
   },
   {
@@ -31,7 +31,7 @@
     "name": "Hunter",
     "alignment": "good",
     "type": "villager",
-    "template": "I am 2 card away from closest Evil",
+    "template": "I am 1 card away from closest Evil",
     "description": "Learn how far from me is the nearest Evil",
     "position": 3
   }

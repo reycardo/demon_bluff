@@ -15,5 +15,6 @@ if __name__ == "__main__":
     game_disposition = GameDisposition(positions={i: card for i, card in enumerate(game)})
     # Set templates for each card based on their position and the overall game disposition
     for position, card in game_disposition.positions.items():
-        _ = card.set_template(this_card_position=position, game_disposition=game_disposition)
+        template = card.get_template(this_card_position=position, game_disposition=game_disposition, lying=card.is_lying)
+        card.template = template
     game_disposition.dump_to_frontend(filename=str(frontend_public_path))

@@ -15,21 +15,21 @@ class Lover(Card):
             is_lying=False
         )
 
-    def set_template(self, this_card_position: int, game_disposition: GameDisposition):
+    def get_template(self, this_card_position: int, game_disposition: GameDisposition, lying: bool = False) -> str:
         # based on the game_disposition, check if a random selected card is EVIL or GOOD
         total_positions = len(game_disposition.positions)
+        random.seed()  # Seed with system time or entropy source
         random_position = random.choice([pos for pos in range(total_positions) if pos != this_card_position])
         random_card: Card = game_disposition.get_card_at(random_position)
 
         if random_card:
-            template = f"The card at position {random_position} is {random_card.alignment.name.lower()}."
+            template = f"#{random_position} is {random_card.alignment.name.lower()}."
 
-        if self.is_corrupted or self.is_lying:
+        if lying:
             # Lie about the alignment of the selected card
             if random_card.alignment == Alignment.GOOD:
-                template = f"The card at position {random_position} is evil."
+                template = f"#{random_position} is evil."
             else:
-                template = f"The card at position {random_position} is good."
-
-        self.template = template
-        return self.template
+                template = f"#{random_position} is good."
+        
+        return template

@@ -15,7 +15,7 @@ class CardType(Enum):
 
 @dataclass
 class Card:
-    def set_template(self, this_card_position: int, game_disposition: "GameDisposition") -> str:
+    def get_template(self, this_card_position: int, game_disposition: "GameDisposition", lying: bool = False) -> str:
         """
         Placeholder for setting the card's template based on its position and the game disposition.
         Should be overridden by subclasses.

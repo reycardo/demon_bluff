@@ -15,31 +15,24 @@ class Lover(Card):
             is_lying=False
         )
 
-    def set_template(self, this_card_position: int, game_disposition: GameDisposition):
-        # based on the game_disposition, check the adjacent positions to see if there are any EVIL cards
+    def get_template(self, this_card_position: int, game_disposition: GameDisposition, lying: bool = False) -> str:
+        # Count adjacent evils (0, 1, or 2)
         adjacent_positions = game_disposition.get_adjacent_positions(this_card_position)
-        evil_count = 0
-        for pos in adjacent_positions:
-            card = game_disposition.get_card_at(pos)
-            if card and card.alignment == Alignment.EVIL:
-                evil_count += 1
+        evil_count = sum(
+            1 for pos in adjacent_positions
+            if game_disposition.get_card_at(pos) and game_disposition.get_card_at(pos).alignment == Alignment.EVIL
+        )
 
-        # get evils in game disposition
-        total_evil = sum(1 for card in game_disposition.get_all_cards() if card.alignment == Alignment.EVIL)
-        
         def neighbor_text(n):
-            return f"Evil neighbor{'s' if n != 1 else ''}"
+            return f"Evil{'s' if n != 1 else ''} adjacent to me"
 
-        if self.is_corrupted or self.is_lying:
-            # Lie about the number of adjacent evil cards
-            possible_lies = [i for i in range(0, total_evil + 1) if i != evil_count]
-            if possible_lies:
-                lie = random.choice(possible_lies)
-                template = f"I have {lie} {neighbor_text(lie)}"
-            else:
-                template = f"I have {evil_count} {neighbor_text(evil_count)}"
+        if lying:
+            # Lie: pick from 0, 1, 2 but never the actual evil_count
+            possible_lies = [i for i in range(0, 3) if i != evil_count]
+            random.seed()
+            lie = random.choice(possible_lies)
+            template = f"I have {lie} {neighbor_text(lie)}"
         else:
             template = f"I have {evil_count} {neighbor_text(evil_count)}"
         
-        self.template = template
-        return self.template
+        return template

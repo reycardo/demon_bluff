@@ -15,7 +15,7 @@ class Hunter(Card):
             is_lying=False
         )    
 
-    def set_template(self, this_card_position: int, game_disposition: GameDisposition):
+    def get_template(self, this_card_position: int, game_disposition: GameDisposition, lying: bool = False) -> str:
         # set template based on game disposition
         # Hunter card will try to find the nearest card whose alignment is EVIL
         nearest_evil_distance = None
@@ -34,12 +34,13 @@ class Hunter(Card):
                 nearest_evil_distance = distance
                 break        
 
-        if self.is_corrupted or self.is_lying:
+        if lying:
             # Get all possible distances except the real one
             possible_distances = [d for d in range(1, (total_positions // 2) + 1)]
             if nearest_evil_distance in possible_distances:
                 possible_distances.remove(nearest_evil_distance)
             if possible_distances:
+                random.seed()
                 lie_distance = random.choice(possible_distances)
                 template = f"I am {lie_distance} card away from closest Evil"
         else:
@@ -47,6 +48,5 @@ class Hunter(Card):
                 template = f"I am {nearest_evil_distance} card away from closest Evil"
             else:
                 template = "No Evil card in range"
-
-        self.template = template
+        
         return template
