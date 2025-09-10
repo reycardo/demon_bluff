@@ -49,7 +49,7 @@ export default function CardButton({ card, x, y, cardSize, selected, onSelect })
       >
         <span style={{ marginBottom: 8, marginTop: 8 }}>#{card.position}</span>
         <img src={card.masked_card ? card.masked_card.image : card.image} alt={card.name} style={{ width: cardSize * 0.6, height: cardSize * 0.6, objectFit: 'contain', marginBottom: 4 }} />
-        <span>{card.name}</span>
+        <span>{card.masked_card ? card.masked_card.name : card.name}</span>
       </button>
     </>
   );

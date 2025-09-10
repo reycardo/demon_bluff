@@ -28,6 +28,7 @@ class Lover(Card):
 
         if lying:
             # Lie: pick from 0, 1, 2 but never the actual evil_count
+            # Ensure max range takes maximum evil in game_disposition
             possible_lies = [i for i in range(0, 3) if i != evil_count]
             random.seed()
             lie = random.choice(possible_lies)
