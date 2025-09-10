@@ -1,5 +1,6 @@
 import React from 'react';
 import CardCircle from './CardCircle';
+import { edge_padding } from './config';
 
 function App() {
   const [cards, setCards] = React.useState([]);
@@ -28,13 +29,14 @@ function App() {
         cards={cards}
         selected={selected}
         onSelect={setSelected}
+        edge_padding={edge_padding}
         onKill={position => {
           setCards(cards.map(card =>
             card.position === position ? { ...card, killed: true } : card
           ));
           setSelected(null);
         }}
-        size={1000}
+        size={500}
         cardSize={180}
       />
     </div>

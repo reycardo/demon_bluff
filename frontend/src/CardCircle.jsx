@@ -2,8 +2,7 @@ import CardButton from './CardButton';
 
 import React from 'react';
 
-export default function CardCircle({ cards, selected, onSelect, size = 500, cardSize = 80 }) {
-  const edge_padding = 100;
+export default function CardCircle({ cards, selected, onSelect, size = 500, cardSize = 80 , edge_padding = 100, onKill }) {
   // Dynamic radius based on viewport size
   const [radius, setRadius] = React.useState(() => {
     const minDim = Math.min(window.innerWidth, window.innerHeight);
