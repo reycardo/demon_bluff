@@ -1,17 +1,24 @@
 import React from 'react';
 import CardCircle from './CardCircle';
 import { edge_padding } from './config';
+import { generateGameButtonStyle } from './buttonStyles';
 
 function App() {
   const [cards, setCards] = React.useState([]);
   const [selected, setSelected] = React.useState(null);
 
+  // Fetch initial game disposition
   React.useEffect(() => {
-    fetch('game.json')
-      .then((res) => res.json())
-      .then(setCards)
-      .catch(() => setCards([]));
+    fetchGameDisposition();
   }, []);
+
+  // Function to fetch game disposition from backend
+  const fetchGameDisposition = async () => {    
+    const res = await fetch('http://localhost:8000/api/game_disposition', { method: 'POST' });
+    const data = await res.json();
+    setCards(data);
+    setSelected(null);
+  };
 
   return (
     <div style={{
@@ -25,6 +32,12 @@ function App() {
       justifyContent: 'center',
       flexDirection: 'column'
     }}>
+      <button
+        style={generateGameButtonStyle}
+        onClick={fetchGameDisposition}
+      >
+        Generate Game
+      </button>
       <CardCircle
         cards={cards}
         selected={selected}
@@ -43,4 +56,4 @@ function App() {
   );
 }
 
-export default App
+export default App;

@@ -41,15 +41,27 @@ class GameDisposition:
         right = keys[(idx + 1) % n]
         return [left, right]    
     
+    def _cards_with_position(self) -> list:
+        """
+        Internal helper to get cards with position info for serialization.
+        """
+        result = []
+        for idx, (position, card) in enumerate(self.positions.items()):
+            card_data = card.to_dict() if hasattr(card, 'to_dict') else card.__dict__.copy()
+            card_data['position'] = idx
+            result.append(card_data)
+        return result
+
     def dump_to_frontend(self, filename: str) -> None:
         """
         Dump the game disposition to a JSON file for the frontend, including position info for each card.
         """
-        cards_with_position = []
-        for idx, (position, card) in enumerate(self.positions.items()):
-            card_data = card.to_dict() if hasattr(card, 'to_dict') else card.__dict__.copy()
-            card_data['position'] = idx
-            cards_with_position.append(card_data)
         import json
         with open(filename, 'w') as f:
-            json.dump(cards_with_position, f, indent=2)
+            json.dump(self._cards_with_position(), f, indent=2)
+
+    def dump_to_dict(self) -> list:
+        """
+        Return the game disposition as a list of dicts for API responses, including position info for each card.
+        """
+        return self._cards_with_position()

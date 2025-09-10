@@ -28,6 +28,7 @@ class Card:
     template: str
     is_corrupted: bool
     is_lying: bool
+    is_dead: bool = False
     description: str = ""
     masked_card: "Card" = None
 
