@@ -10,7 +10,7 @@ frontend_public_path = (current_dir.parent / 'frontend' / 'public' / 'game.json'
 
 if __name__ == "__main__":
     deck = prepare_deck()
-    game = card_selection(deck=deck, evil_quantity=1, good_quantity=3)
+    game = card_selection(deck=deck, evil_quantity=1, good_quantity=4)
     game = shuffle_deck(game)
     game_disposition = GameDisposition(positions={i: card for i, card in enumerate(game)})
     # Set templates for each card based on their position and the overall game disposition
