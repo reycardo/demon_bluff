@@ -34,7 +34,7 @@ class Card:
 
     def __post_init__(self):
         # Always prepend the image path
-        self.image = f"images/{self.image}"
+        self.image = f"images/cards/{self.image}"
 
     def to_dict(self):
         return {
