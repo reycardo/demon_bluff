@@ -33,4 +33,5 @@ def generate_game_disposition():
             card.mask(this_card_position=position, game_disposition=game_disposition)
         template = card.get_template(this_card_position=position, game_disposition=game_disposition, lying=card.is_lying)
         card.template = template
+        game_disposition.dump_to_frontend(frontend_public_path)
     return game_disposition.dump_to_dict()
