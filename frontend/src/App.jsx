@@ -1,6 +1,6 @@
 import React from 'react';
 import CardCircle from './CardCircle';
-import { edge_padding } from './config';
+import { edge_padding, cardSize, size } from './config';
 import { generateGameButtonStyle } from './buttonStyles';
 
 function App() {
@@ -45,12 +45,12 @@ function App() {
         edge_padding={edge_padding}
         onKill={position => {
           setCards(cards.map(card =>
-            card.position === position ? { ...card, killed: true } : card
+            card.position === position ? { ...card, is_dead: true } : card
           ));
           setSelected(null);
         }}
-        size={500}
-        cardSize={180}
+        size={size}
+        cardSize={cardSize}
       />
     </div>
   );

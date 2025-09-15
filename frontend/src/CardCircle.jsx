@@ -1,12 +1,12 @@
 import CardButton from './CardButton';
-
 import React from 'react';
+import { cardSize as configCardSize, size as configSize, edge_padding as configEdgePadding } from './config';
 
-export default function CardCircle({ cards, selected, onSelect, size = 500, cardSize = 80 , edge_padding = 100, onKill }) {
+export default function CardCircle({ cards, selected, onSelect, size = configSize, cardSize = configCardSize, edge_padding = configEdgePadding, onKill }) {
   // Dynamic radius based on viewport size
   const [radius, setRadius] = React.useState(() => {
     const minDim = Math.min(window.innerWidth, window.innerHeight);
-    return (minDim - cardSize) / 2 - edge_padding; // 100px padding from edge
+    return (minDim - cardSize) / 2 - edge_padding;
   });
   const center = size / 2;
 
@@ -27,8 +27,7 @@ export default function CardCircle({ cards, selected, onSelect, size = 500, card
         const x = center + radius * Math.cos(angle) - cardSize / 2;
         const y = center + radius * Math.sin(angle) - cardSize / 2;
         return (
-          <CardButton
-            key={card.position}
+          <CardButton            
             card={card}
             x={x}
             y={y}
