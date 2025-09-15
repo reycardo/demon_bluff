@@ -1,7 +1,7 @@
 import CardButton from './CardButton';
 import React from 'react';
 import { cardSize as configCardSize, size as configSize, edge_padding as configEdgePadding } from './config';
-// If you import styles here in the future, use from './styles/...'
+import { killButtonStyle } from './styles/buttonStyles';
 
 export default function CardCircle({ cards, selected, onSelect, size = configSize, cardSize = configCardSize, edge_padding = configEdgePadding, onKill }) {
   // Dynamic radius based on viewport size
@@ -63,7 +63,7 @@ export default function CardCircle({ cards, selected, onSelect, size = configSiz
             <div><strong>Type:</strong> {mask ? mask.type : card.type}</div>
             <div><strong>Alignment:</strong> {mask ? mask.alignment : card.alignment}</div>
             <button
-              style={{ marginTop: 24, padding: '0.5rem 1.5rem', fontSize: '1.1rem', borderRadius: 8, background: '#c00', color: '#fff', border: 'none', cursor: 'pointer' }}
+              style={killButtonStyle}
               onClick={() => onKill(card.position)}
             >
               Kill Selected Card

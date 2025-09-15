@@ -1,4 +1,3 @@
-// src/styles/cardTemplateStyles.js
 export const cardTemplateStyle = (x, y, cardSize) => ({
   position: 'absolute',
   left: x + (cardSize / 2) - (140 / 2),
