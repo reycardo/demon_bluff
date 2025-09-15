@@ -1,3 +1,14 @@
+export const hpCircleContainerStyle = {
+  position: 'fixed',
+  left: 32,
+  bottom: 32,
+  width: 80,
+  height: 80,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  zIndex: 200
+};
 export const selectedCardInfoStyle = {
   position: 'absolute',
   left: '50%',
