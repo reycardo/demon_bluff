@@ -1,6 +1,7 @@
 import CardButton from './CardButton';
 import React from 'react';
 import { cardSize as configCardSize, size as configSize, edge_padding as configEdgePadding } from './config';
+// If you import styles here in the future, use from './styles/...'
 
 export default function CardCircle({ cards, selected, onSelect, size = configSize, cardSize = configCardSize, edge_padding = configEdgePadding, onKill }) {
   // Dynamic radius based on viewport size

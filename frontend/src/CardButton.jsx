@@ -1,6 +1,6 @@
 import { skull_image } from './config';
-import { cardButtonStyle, skullImageStyle, cardImageStyle, cardPositionStyle } from './cardButtonStyles';
-import { cardTemplateStyle } from './cardTemplateStyles';
+import { cardButtonStyle, skullImageStyle, cardImageStyle, cardPositionStyle } from './styles/cardButtonStyles';
+import { cardTemplateStyle } from './styles/cardTemplateStyles';
 
 export default function CardButton({ card, x, y, cardSize, selected, onSelect }) {
   return (

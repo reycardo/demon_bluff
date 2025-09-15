@@ -1,7 +1,7 @@
 import React from 'react';
 import CardCircle from './CardCircle';
 import { edge_padding, cardSize, size } from './config';
-import { generateGameButtonStyle } from './buttonStyles';
+import { generateGameButtonStyle } from './styles/buttonStyles';
 
 function App() {
   const [cards, setCards] = React.useState([]);
