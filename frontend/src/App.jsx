@@ -1,7 +1,7 @@
 import React from 'react';
 import CardCircle from './CardCircle';
 import { edge_padding, cardSize, size } from './config';
-import { generateGameButtonStyle } from './styles/buttonStyles';
+import { generateGameButtonStyle, appContainerStyle } from './styles/styles';
 
 function App() {
   const [cards, setCards] = React.useState([]);
@@ -21,17 +21,7 @@ function App() {
   };
 
   return (
-    <div style={{
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      width: '100vw',
-      height: '100vh',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      flexDirection: 'column'
-    }}>
+  <div style={appContainerStyle}>
       <button
         style={generateGameButtonStyle}
         onClick={fetchGameDisposition}
