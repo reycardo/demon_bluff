@@ -50,6 +50,13 @@ class Card:
     def corrupt(self):
         self.is_corrupted = True
 
+    def kill(self):
+        self.is_dead = True
+        if self.alignment == Alignment.EVIL:
+            return 0
+        else:
+            return 5
+
     @staticmethod
     def dump_to_json(cards, filename="game.json"):
         import json

@@ -23,7 +23,7 @@ frontend_public_path = (current_dir.parent / 'frontend' / 'public' / 'game.json'
 @app.post("/api/game_disposition")
 def generate_game_disposition():
     deck = prepare_deck()
-    game = card_selection(deck=deck, evil_quantity=1, good_quantity=4)
+    game = card_selection(deck=deck, evil_quantity=1, good_quantity=5)
     game = shuffle_deck(game)
     game_disposition = GameDisposition(positions={i: card for i, card in enumerate(game)})
     # Set templates for each card based on their position and the overall game disposition
