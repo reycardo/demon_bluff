@@ -2,7 +2,7 @@ import random
 from api.game_setup.game_disposition import GameDisposition
 from .base import Card, Alignment, CardType
 
-class Lover(Card):
+class Tsuki(Card):
     def __init__(self):
         super().__init__(
             image="tsuki.png",
